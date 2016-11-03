@@ -68,8 +68,7 @@ public class TestMecanum extends OpMode {
     @Override
     public void init() {
         telemetry.addData("Status", "Initialized");
-        leftMotorback = hardwareMap.dcMotor.get("LeftMotorBack");
-        rightMotorback = hardwareMap.dcMotor.get("RightMotorBack");
+
         leftMotorfront = hardwareMap.dcMotor.get("LeftMotorFront");
         rightMotorfront = hardwareMap.dcMotor.get("RightMotorFront");
         /* eg: Initialize the hardware variables. Note that the strings used here as parameters
@@ -107,21 +106,18 @@ public class TestMecanum extends OpMode {
     @Override
     public void loop() {
         telemetry.addData("Status", "Running: " + runtime.toString());
-        leftMotorback.setPower((gamepad1.left_stick_y + gamepad1.left_stick_x) / 2);
-        rightMotorback.setPower((-gamepad1.left_stick_y + gamepad1.left_stick_x) / 2);
+
         leftMotorfront.setPower((gamepad1.left_stick_y - gamepad1.left_stick_x) / 2);
         rightMotorfront.setPower((-gamepad1.left_stick_y - gamepad1.left_stick_x) / 2);
 
         if (gamepad1.dpad_right) {
-            leftMotorback.setPower(-1);
-            rightMotorback.setPower(-1);
+
             leftMotorfront.setPower(-1);
             rightMotorfront.setPower(-1);
         }
         else
         if (gamepad1.dpad_left) {
-            leftMotorback.setPower(1);
-            rightMotorback.setPower(1);
+
             leftMotorfront.setPower(1);
             rightMotorfront.setPower(1);
         }
